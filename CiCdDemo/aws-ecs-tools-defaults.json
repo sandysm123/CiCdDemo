@@ -1,0 +1,27 @@
+
+{
+    "region" : "us-east-1",
+    "profile" : "default",
+    "configuration" : "Release",
+    "image-tag"     : "cicddemo:latest",
+    "docker-build-working-dir" : "",
+    "cluster"                  : "cicddemo-cluster",
+    "launch-type"              : "FARGATE",
+    "launch-subnets"           : "subnet-09ad1a927093a4cff,subnet-0aec6ce9d69a27000,subnet-0228b4878867508c0,subnet-0c226c1f215312eb3,subnet-00f1d7af87473e421,subnet-05b418779726185ef",
+    "launch-security-groups"   : "sg-0cac2208d594024ac",
+    "assign-public-ip"         : true,
+    "task-definition-name"     : "CiCdDemo",
+    "task-cpu"                 : "256",
+    "task-memory"              : "512",
+    "platform-version"         : "LATEST",
+    "task-execution-role"      : "ecsTaskExecutionRole",
+    "container-name"           : "CiCdDemo",
+    "container-port-mapping"   : "80:80",
+    "container-environment-variables" : "\"ASPNETCORE_ENVIRONMENT\"=\"Production\"",
+    "skip-image-push"                 : false,
+    "cluster-service"                 : "CiCdDemo",
+    "desired-count"                   : 1,
+    "deployment-minimum-healthy-percent" : 50,
+    "deployment-maximum-percent"         : 200,
+    "vstoolkit-deployment-mode"          : "DeployService"
+}

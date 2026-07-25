@@ -1,0 +1,29 @@
+name: CI - Build & Test
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore CiCdDemo/CiCdDemo.csproj
+
+      - name: Build
+        run: dotnet build CiCdDemo/CiCdDemo.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test CiCdDemo.Tests/CiCdDemo.Tests.csproj --configuration Release
+
+      - name: Build Docker image (sanity check only, not pushed)
+        run: docker build -f CiCdDemo/Dockerfile -t cicddemo:pr-${{ github.event.number }} .
