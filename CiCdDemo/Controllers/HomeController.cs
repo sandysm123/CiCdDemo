@@ -8,7 +8,7 @@ namespace CiCdDemo.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["Message"] = "Hello! This page went through code review before shipping..";
+            ViewData["Message"] = "Hello! This page went through code review After  CI/CD..";
             return View();
         }
 
